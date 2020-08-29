@@ -1,0 +1,36 @@
+.chart {
+  width: auto;
+  padding: 1em;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.map {
+  width: 720px;
+  height: 100vh;
+  padding: 1em;
+  margin: 1em;
+}
+
+.max {
+  display: flex;
+  background-color: bisque;
+  font-size: large;
+  width: 100%;
+  margin-top: 1em;
+}
+
+p {
+  padding-top: 1em;
+}
+
+.st-dev {
+  display: flex;
+  background-color: lightgoldenrodyellow;
+  font-size: large;
+  width: 100%;
+  margin-top: 1em;
+}
