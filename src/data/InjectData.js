@@ -3,20 +3,20 @@ import { sample } from "../data/sample";
 
 export const dataContext = createContext();
 
-const InjectData = ({ children }) => {
+const InjectData = ({ children, uri, index }) => {
   const [data, setData] = useState(sample);
 
   useEffect(() => {
     const interval = setInterval(async () => {
-      const resp = await fetch("/api", { method: "get", mode: "no-cors" });
+      const resp = await fetch(uri, { method: "get", mode: "no-cors" });
       const d = await (resp.ok ? resp.json() : "Error!");
       setData((oldData) => {
         return {
           labels: [...oldData.labels, d.time],
           datasets: [
             {
-              ...oldData.datasets[0],
-              data: [...oldData.datasets[0].data, d.value],
+              ...oldData.datasets[index],
+              data: [...oldData.datasets[index].data, d.value],
             },
           ],
         };

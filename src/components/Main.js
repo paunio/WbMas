@@ -11,7 +11,7 @@ const Main = () => {
   return (
     <Layout>
       <main className="center">
-        <InjectData>
+        <InjectData uri="/api" index={0}>
           <div className="container">
             <LineChart />
             <Max />

@@ -1,21 +1,10 @@
-from serial import Serial
+from serial import Serial, EIGHTBITS, PARITY_NONE, STOPBITS_ONE
 from pymongo import MongoClient
-from json import loads, dumps
+from json import loads
 
-client = MongoClient()
+myclient = MongoClient("mongodb://localhost:27017/")
+mydb = myclient["database"]
 
-db = client["baza"]
-collection = db.kolekcija
-
-s = Serial("COM8")
-while 1:
-    result = ""
-    a = s.read().decode()
-    while a != "\n":
-        result += a
-        a = s.read().decode()
-
-    try:
-        collection.insert_one(loads(result))
-    except:
-        pass
+col_temp = mydb["temp"]
+col_light = mydb["light"]
+col_press = mydb["press"]
