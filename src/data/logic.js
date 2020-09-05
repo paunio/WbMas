@@ -65,7 +65,7 @@ export const getMaxTime = (data, max) => {
   return data.labels[data.datasets[0].data.indexOf(max.toString())];
 };
 
-export const setStateData = (oldData, index, d) => {
+export const setStateData = (oldData, d) => {
   const dataArr = [];
   const timeArr = [];
 
@@ -81,7 +81,7 @@ export const setStateData = (oldData, index, d) => {
       labels: timeArr,
       datasets: [
         {
-          ...oldData.datasets[index],
+          ...oldData.datasets[0],
           data: dataArr,
         },
       ],
@@ -91,8 +91,8 @@ export const setStateData = (oldData, index, d) => {
       labels: [...oldData.labels, d.time],
       datasets: [
         {
-          ...oldData.datasets[index],
-          data: [...oldData.datasets[index].data, d.value],
+          ...oldData.datasets[0],
+          data: [...oldData.datasets[0].data, d.value],
         },
       ],
     };

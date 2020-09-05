@@ -7,7 +7,7 @@ const LineChart = () => {
   const data = useContext(dataContext);
   return (
     <div className="chart">
-      <div>{data ? <Line data={data} /> : <h2>Loading..</h2>}</div>
+      {data ? <Line data={data} /> : <h2>Loading..</h2>}
     </div>
   );
 };

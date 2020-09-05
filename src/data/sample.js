@@ -9,10 +9,5 @@ export const sample = {
   ],
 };
 
-export const sampleMapData = {
-  center: {
-    lat: 59.95,
-    lng: 30.33,
-  },
-  zoom: 11,
-};
+export const options = ["Temperature", "Pressure", "UV"];
+export const urlOptions = ["temp", "press", "light"];

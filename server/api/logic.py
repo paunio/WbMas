@@ -24,6 +24,3 @@ def check_unit(unit):
 
     if error:
         raise Exception("Invalid unit!")
-
-
-check_unit("temp")

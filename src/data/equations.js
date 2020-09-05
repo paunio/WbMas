@@ -1,17 +1,9 @@
-export const getMean = function (data) {
-  return (
-    data.reduce(function (a, b) {
-      return Number(a) + Number(b);
-    }) / data.length
-  );
+export const getMean = (data) => {
+  return data.reduce((a, b) => Number(a) + Number(b)) / data.length;
 };
 
-export const getSD = function (data) {
-  let m = getMean(data);
-  return Math.sqrt(
-    data.reduce(function (sq, n) {
-      return sq + Math.pow(n - m, 2);
-    }, 0) /
+export const getSD = (data) =>
+  Math.sqrt(
+    data.reduce((sq, n) => sq + Math.pow(n - getMean(data), 2), 0) /
       (data.length - 1)
   );
-};
