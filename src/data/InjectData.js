@@ -1,30 +1,19 @@
 import React, { useEffect, useState, createContext } from "react";
 import { sample } from "../data/sample";
+import { serialize, setStateData } from "../data/logic";
 
 export const dataContext = createContext();
 
-const InjectData = ({ children, uri, index }) => {
+const InjectData = ({ children, uri }) => {
   const [data, setData] = useState(sample);
 
   useEffect(() => {
-    const interval = setInterval(async () => {
-      const resp = await fetch(uri, { method: "get", mode: "no-cors" });
-      const d = await (resp.ok ? resp.json() : "Error!");
-      setData((oldData) => {
-        return {
-          labels: [...oldData.labels, d.time],
-          datasets: [
-            {
-              ...oldData.datasets[index],
-              data: [...oldData.datasets[index].data, d.value],
-            },
-          ],
-        };
-      });
-    }, 2000);
-
-    return () => clearInterval(interval);
-  }, [data]);
+    fetch(uri, { method: "get", mode: "no-cors" })
+      .then((resp) => (resp.ok ? resp.json() : "Error!"))
+      .then((d) => serialize(d))
+      .then((d) => setData((oldData) => setStateData(oldData, 0, d)))
+      .catch((err) => console.log(err));
+  }, [uri]);
 
   return <dataContext.Provider value={data}>{children}</dataContext.Provider>;
 };

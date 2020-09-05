@@ -1,29 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 
 import { dataContext } from "../data/InjectData";
+import { checkMax, getMaxTime } from "../data/logic";
 
 const Max = () => {
   const [max, setMax] = useState(0);
+  const data = useContext(dataContext);
+
+  useEffect(() => {
+    checkMax(data, setMax);
+  }, [data, max]);
+
   return (
-    <dataContext.Consumer>
-      {(data) => {
-        if (data.datasets[0].data.length !== 0)
-          setMax(Math.max(...data.datasets[0].data));
-        return (
-          <div className="max center">
-            <p>
-              The current maximum value is:{" "}
-              <strong>
-                {max === 0
-                  ? "Calculating..."
-                  : `${max} @
-                ${max && data.labels[data.datasets[0].data.indexOf(max)]}`}
-              </strong>
-            </p>
-          </div>
-        );
-      }}
-    </dataContext.Consumer>
+    <div className="max center">
+      <p>
+        The current maximum value is:{" "}
+        <strong>
+          {max === 0
+            ? "Calculating..."
+            : `${max} @
+                ${max && getMaxTime(data, max)}`}
+        </strong>
+      </p>
+    </div>
   );
 };
 

@@ -1,24 +1,22 @@
 import React from "react";
 
+import Max from "./Max";
+import Tabs from "./Tabs";
+import StDev from "./StDev";
 import Layout from "./Layout";
 import LineChart from "./LineChart";
-import Map from "./Map";
-import Max from "./Max";
-import StDev from "./StDev";
-import InjectData from "../data/InjectData";
 
 const Main = () => {
   return (
     <Layout>
       <main className="center">
-        <InjectData uri="/api" index={0}>
+        <Tabs>
           <div className="container">
             <LineChart />
             <Max />
             <StDev />
           </div>
-          <Map />
-        </InjectData>
+        </Tabs>
       </main>
     </Layout>
   );

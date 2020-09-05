@@ -11,12 +11,11 @@
   "author": "Petar Paunovic, Dejan Dzombeta",
   "license": "ISC",
   "dependencies": {
-    "@react-google-maps/api": "^1.9.12",
     "chart.js": "^2.9.3",
-    "google-map-react": "^2.0.8",
     "react": "^16.13.1",
     "react-chartjs-2": "^2.10.0",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-tabs": "^3.1.1"
   },
   "devDependencies": {
     "react-scripts": "^3.4.3"
