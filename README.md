@@ -8,7 +8,7 @@
   flask run
   ```
   
-- [x] Start <strong><em>React</em></strong>
+- [x] Install dependecies and start <strong><em>React</em></strong>.
 
   ```
   npm run start
